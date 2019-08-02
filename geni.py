@@ -25,7 +25,6 @@ def get_song_data():
     
     # Find the how many items (songs containing text or songs from an artist)
     size = len(json_body['response']['hits'])
-    print size
     
     # Choose a random number for our indices
     index = random.randint(1 ,size-1)
