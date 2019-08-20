@@ -21,5 +21,5 @@ def main():
 app.run(
     port = int(os.getenv('PORT')),
     host = os.getenv('IP','0.0.0.0'),
-    # debug=True
+    debug = True
 )
