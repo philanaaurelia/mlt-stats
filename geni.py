@@ -15,6 +15,7 @@ class Song:
         + self.song_image  + "artist_image: " + self.artist_image
         
 def get_song_data():
+    # token = os.getenv('geni_token') - This is for Heroku
     token = 'GbCCGKGuXbyQGcnHvrFsoBgsQgUO3u7cMSrbefQHKKdpGIKaO2-vi740pdyzSsQK'
     url = 'https://api.genius.com/search?q=Lauryn%20Hill&per_page=50'
     headers = {'Authorization': 'Bearer ' + token}

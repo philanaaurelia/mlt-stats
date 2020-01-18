@@ -13,10 +13,10 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def main():
-    song_data = geni.get_song_data()
+    song = geni.get_song_data()
     tweet = twit.get_tweet() 
     
-    return render_template('index.html', song_data = song_data, tweet = tweet)
+    return render_template('index.html', song_data = song, twitter_data = tweet)
     
 app.run(
     port = int(os.getenv('PORT')),
