@@ -16,14 +16,12 @@ class Song:
         
 def get_song_data():
     # token = os.getenv('geni_token') - This is for Heroku
-    token = 'GbCCGKGuXbyQGcnHvrFsoBgsQgUO3u7cMSrbefQHKKdpGIKaO2-vi740pdyzSsQK'
+    token = '4oIEUPOC23z1eaTtYaRCWnr_0dX-n9UR3HIuw538MBb5kMVWhUBdWuh1mbVq1xUC'
     url = 'https://api.genius.com/search?q=Lauryn%20Hill&per_page=50'
     headers = {'Authorization': 'Bearer ' + token}
     
     response = requests.get(url, headers=headers)
     json_body = response.json()
- 
-    # print json.dumps(json_body, indent=2)
     
     # Find the how many items (songs containing text or songs from an artist)
     size = len(json_body['response']['hits'])

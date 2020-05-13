@@ -16,11 +16,11 @@ class Tweet:
         
 def get_tweet():
     # twit_key = os.getenv('twit_key') - This is for Heroku
-    twit_key = 'UjvHcugOaomXcIeN600OTd56e' 
+    twit_key = 'tMhwBBDqqeEiozlZVgCkzzCVO' 
     # twit_secret = os.getenv('twit_secret') - This is for Heroku
-    twit_secret = 'GrmnaT8HNlNFH2pF98ScPecF49RM470CSWnWVNMj7FAr60biq9'
+    twit_secret = 'LY7IzvOsVwlLyXv2X2dXo1Xy6MbbwAgL1DPUBrDQ7iTI2NTIQ4'
     auth = tweepy.OAuthHandler(twit_key, twit_secret)
-    auth.set_access_token("57044214-C3qKJQCHr9Ez0hOEnBDcvvQVNOFjHyKmA2ymLoDUI","XnCr2df78uAs4QCdDdBDi3RzSL9d9jBBIw5ExXdXi5Hcc")
+    auth.set_access_token("1165427794815438848-j2xCg54UvzrAU4KQTZI7WOaL03bOF6","LFEJ61YW1C4px9T2QNl7ZjfasxfodGHMb8SccBjdwJ2rc")
 
     api = tweepy.API(auth)
     new_tweets = api.search(q="love Lauryn Hill -filter:retweets AND -filter:replies AND -filter:links AND -filter:twimg", count=100, lang="en")
