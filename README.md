@@ -5,7 +5,7 @@
 
 2. Log into course's heroku account by running the following commands in the terminal
 - ```sudo snap install heroku --classic``` (if you haven't installed it already)
-- ```heroku login -i``` (username=cosc-456@morgan.edu; password=M0rg4n+B34rs)
+- ```heroku login -i``` (username=cosc-458@morgan.edu; password=M0rg4n+B34rs)
 
 3. Grab the code from Heroku
 - ```git clone https://git.heroku.com/cosc458-proj1-music.git``` 
