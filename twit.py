@@ -25,7 +25,7 @@ def get_tweet():
     api = tweepy.API(auth)
     new_tweets = api.search(q="love Lauryn Hill -filter:retweets AND -filter:replies AND -filter:links AND -filter:twimg", count=100, lang="en")
     size = len(new_tweets)
-    i = random.randint(0,size)
+    i = random.randint(0,size-1)
     text = json.dumps(new_tweets[i].text)
     text = text[1:-1]
     user = json.dumps(new_tweets[i].user.screen_name)

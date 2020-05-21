@@ -3,7 +3,6 @@ import os
 import random
 import requests
 import json
-import tweepy
 import twit
 import geni
 from flask import render_template
