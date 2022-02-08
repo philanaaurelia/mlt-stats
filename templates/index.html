@@ -1,35 +1,67 @@
 <html>
-    <head>
-        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
-        <link rel="stylesheet" href="/static/theme.css">
-         
-        <title>
-            Love | Lauryn Hill
-        </title>   
-        <style>
-            body {
-                font-family: 'Ubuntu';font-size: 22px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container song">
-            <img src={{song_data.song_image}} />
-            
-            <table>
-                <tr>
-                    <td><img class=artist src={{song_data.artist_image}} /></td>
-                    <td>
-                        <h1><a href="{{song_data.artist_link}}">{{song_data.artist}}</a></h1>
-                        <h2>{{song_data.song}}</h2>
-                    </td>
-                </tr>
-            </table>
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500;600;700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/theme.css">
+
+
+  <title>
+    MLT | Stats
+  </title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="top row">
+      <div class="column left row">
+        <img src={{song_data.song_image}} width="100" /> <br>
+        <span> Hello, </span><span class="bold"> Philana</span>! <br>
+      </div>
+      <div class="column right">
+        <div class="card shadow"> You are currently in GOOD standing.</div>
+        <div class="card shadow">
+          Respect Meter <br>
+          <div class="progress">
+            <div class="progress-bar bg-prog1" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog2" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog3" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog4" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog5" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog6" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog7" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog8" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog9" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog10" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
         </div>
-        {% if twitter_data %}
-            <div class="container tweet">
-                <p> {{twitter_data.tweet}} </p>
-            </div>
-        {%endif%}
-    </body>
+        <!-- edit this section --->
+        <div class="card shadow">
+          Recent Activity
+        </div>
+      </div>
+    </div> <!-- End top row -->
+    <div class="bottom row">
+      <div class="column left row">
+        <div class="card shadow">Badges</div>
+      </div>
+      <div class="column right">
+        <div class="card shadow"> All Activity</div>
+
+      </div>
+
+      <img class=artist src={{song_data.artist_image}} />
+
+      <h1><a href="{{song_data.artist_link}}">{{song_data.artist}}</a></h1>
+      <h2>{{song_data.song}}</h2>
+
+    </div>
+  </div>
+  {% if twitter_data %}
+  <div class=" tweet">
+    <p> {{twitter_data.tweet}} </p>
+  </div>
+  {%endif%}
+</body>
+
 </html>
