@@ -24,13 +24,13 @@ body, span, p {
   clear: both;
 }
 
-.container {
-  position: fixed;
+.cont {
+  position: absolute;
 /* 	border-radius: 10px;
 	box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	min-height: 100px;
-	height: 80%;
-	width: 80%;
+	height: 90%;
+	width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
