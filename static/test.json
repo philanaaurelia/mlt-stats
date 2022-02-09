@@ -1,0 +1,87 @@
+{
+	"fellows": [{
+		"name": "Philana",
+		"email": "philanab@gmail.com",
+		"records": [{
+				"month": "Jan",
+				"year": 2024,
+				"multiplier": 1,
+				"percentage": 100,
+				"notes": "",
+				"points": [{
+						"name": "Coach Call Scheduling",
+						"value": 5
+					},
+					{
+						"name": "Coach Call Attendance",
+						"value": 10
+					},
+					{
+						"name": "Assignment Completed",
+						"value": 5
+					}
+				]
+			},
+			{
+				"month": "Dec",
+				"year": 2023,
+				"multiplier": 1,
+				"percentage": 100,
+				"notes": "",
+				"points": [{
+						"name": "Coach Call Scheduling",
+						"value": 5
+					},
+					{
+						"name": "Coach Call Attendance",
+						"value": 10
+					},
+					{
+						"name": "Assignment Completed",
+						"value": 5
+					}
+				]
+			},
+			{
+				"month": "Nov",
+				"year": 2023,
+				"multiplier": 1,
+				"percentage": 100,
+				"notes": "",
+				"points": [{
+						"name": "Coach Call Scheduling",
+						"value": 5
+					},
+					{
+						"name": "Coach Call Attendance",
+						"value": 10
+					},
+					{
+						"name": "Assignment Completed",
+						"value": 5
+					}
+				]
+			},
+			{
+				"month": "Oct",
+				"year": 2023,
+				"multiplier": 1,
+				"percentage": 100,
+				"notes": "",
+				"points": [{
+						"name": "Coach Call Scheduling",
+						"value": 5
+					},
+					{
+						"name": "Coach Call Attendance",
+						"value": 10
+					},
+					{
+						"name": "Assignment Completed",
+						"value": 5
+					}
+				]
+			}
+		]
+	}]
+}

@@ -2,6 +2,7 @@ import requests
 import json
 import random
 import os
+import fellow
 from pathlib import Path
 
 class MLT_Data:
@@ -19,10 +20,9 @@ class MLT_Data:
             # move cursor to beginning of file
             file.seek(0)
             file_data = file.read()
-            json.loads(file_data)
-          
+            self.json_data = json.loads(file_data)
 
-            print("hello")
+            print(self.json_data)
         
     def __str__(self):
         return "filename: " + self.filename + "\n";
@@ -37,6 +37,19 @@ class MLT_Data:
         "year": year,
         "points": []
         }
+        
+    
+    def get_fellow_data(self, email):
+        # Get JSON of fellows
+        
+        # search for fellow
+        for fellow in self.json_data['fellows']:
+            if fellow['email'] == email:
+                name = fellow['name']
+                records = fellow["records"]
+                fellow_data = Fellow(name, email, records)
+                return fellow_data
+        return None
         
     ''' def create_points(self):
         self.point = {"multipler": mult,
