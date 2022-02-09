@@ -41,18 +41,38 @@
       </div>
     </div> <!-- End top row -->
     <div class="bottom row">
-      <div class="column left row">
+      <div class="column left">
         <div class="card shadow">Badges</div>
       </div>
       <div class="column right">
         <div class="card shadow"> All Activity <br>
-          {% for item in fellow_data.records %}
-          <p> {{ item.month }} </p>
-          {% for point in item.points %}
-          <p> {{ point.name }} </p>
-          {% endfor %}
+          <div style="height: 200px; overflow-y:scroll">
+            {% for item in fellow_data.records %}
+            <p>Month: {{ item.month }} </p>
+            <table class="table table-bordered table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for point in item.points %}
+                <tr>
+                  <td>{{ point.name }}</td>
+                  <td>{{ point.value }} / {{ point.total }} </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% endfor %}
+          </div>
         </div>
-        {% endfor %}
+
+
+
+
       </div>
     </div>
   </div>

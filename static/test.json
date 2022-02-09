@@ -10,15 +10,18 @@
 				"notes": "",
 				"points": [{
 						"name": "Coach Call Scheduling",
-						"value": 5
+						"value": 5,
+						"total": 5
 					},
 					{
 						"name": "Coach Call Attendance",
-						"value": 10
+						"value": 15,
+						"total": 10
 					},
 					{
 						"name": "Assignment Completed",
-						"value": 5
+						"value": 0,
+						"total": 5
 					}
 				]
 			},
@@ -30,15 +33,18 @@
 				"notes": "",
 				"points": [{
 						"name": "Coach Call Scheduling",
-						"value": 5
+						"value": 5,
+						"total": 5
 					},
 					{
 						"name": "Coach Call Attendance",
-						"value": 10
+						"value": 10,
+						"total": 10
 					},
 					{
 						"name": "Assignment Completed",
-						"value": 5
+						"value": 5,
+						"total": 5
 					}
 				]
 			},
@@ -50,15 +56,18 @@
 				"notes": "",
 				"points": [{
 						"name": "Coach Call Scheduling",
-						"value": 5
+						"value": 0,
+						"total": 5
 					},
 					{
 						"name": "Coach Call Attendance",
-						"value": 10
+						"value": 10,
+						"total": 10
 					},
 					{
 						"name": "Assignment Completed",
-						"value": 5
+						"value": 5,
+						"total": 5
 					}
 				]
 			},
