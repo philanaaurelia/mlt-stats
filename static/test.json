@@ -2,6 +2,7 @@
 	"fellows": [{
 		"name": "Philana",
 		"email": "philanab@gmail.com",
+		"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
 		"records": [{
 				"month": "Jan",
 				"year": 2024,

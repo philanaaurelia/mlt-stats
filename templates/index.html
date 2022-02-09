@@ -12,12 +12,13 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container container-fluid">
     <div class="top row">
-      <div class="column left">
-        <span> Hello, </span><span class="bold"> {{fellow_data.name}}</span>! <br>
+      <div class="column col-sm-4"><center>
+        <img src={{fellow_data.profile}} class="profile"/> <br>
+        <h2 style="padding-top: 25px; font-size: 24px">Hello, <strong>{{fellow_data.name}}!</strong></h2></center>
       </div>
-      <div class="column right">
+      <div class="column col-sm-8">
         <div class="card shadow"> You are currently in GOOD standing.</div>
         <div class="card shadow">
           Respect Meter <br>
@@ -41,12 +42,12 @@
       </div>
     </div> <!-- End top row -->
     <div class="bottom row">
-      <div class="column left">
+      <div class="column col-sm-4">
         <div class="card shadow">Badges</div>
       </div>
-      <div class="column right">
+      <div class="column col-sm-8">
         <div class="card shadow"> All Activity <br>
-          <div style="height: 200px; overflow-y:scroll">
+          <div style="height: 150px; overflow-y:scroll">
             {% for item in fellow_data.records %}
             <p>Month: {{ item.month }} </p>
             <table class="table table-bordered table-sm">

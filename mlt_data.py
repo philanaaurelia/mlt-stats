@@ -46,8 +46,9 @@ class MLT_Data:
         for fellow in self.json_data['fellows']:
             if fellow['email'] == email:
                 name = fellow['name']
+                profile = fellow['profile_url']
                 records = fellow["records"]
-                fellow_data = Fellow(name, email, records)
+                fellow_data = Fellow(name, email, profile, records)
                 return fellow_data
         return None
         

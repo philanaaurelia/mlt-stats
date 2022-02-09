@@ -17,14 +17,6 @@ body, span, p {
   height: 50%;
 }
 
-.left {
-  width: 30%;
-}
-
-.right {
-  width: 70%;
-}
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -36,7 +28,8 @@ body, span, p {
   position: fixed;
 /* 	border-radius: 10px;
 	box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-	height: 400px;
+	min-height: 100px;
+	height: 80%;
 	width: 80%;
   top: 50%;
   left: 50%;
@@ -59,6 +52,16 @@ img {
   border-radius: 50%;
   max-width: 90px;
   max-height: 90px;
+}
+
+.center-content {
+  display: inline;
+    float: none;
+}
+
+.profile {
+  width: 175px;
+  height: 175px;
 }
 
 h1 {
