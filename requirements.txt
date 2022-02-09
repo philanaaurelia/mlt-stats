@@ -1,4 +1,4 @@
 flask
 requests
 requests_oauthlib
-tweepy
+pathlib
