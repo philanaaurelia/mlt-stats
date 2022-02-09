@@ -2,7 +2,7 @@ import requests
 import json
 import random
 import os
-import fellow
+from fellow import Fellow
 from pathlib import Path
 
 class MLT_Data:

@@ -14,12 +14,14 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def main():
+    
     song = geni.get_song_data()
     tweet = twit.get_tweet() 
     # data = MLT_Data("fellow_data.json")
     data = MLT_Data("test.json")
+    fellow = data.get_fellow_data("philanab@gmail.com")
 
-    return render_template('index.html', song_data = song, twitter_data = tweet)
+    return render_template('index.html', song_data = song, twitter_data = tweet, fellow_data = fellow)
     
     
 @app.route('/form', methods = ['POST', 'GET'])
