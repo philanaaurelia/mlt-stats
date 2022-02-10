@@ -3,6 +3,10 @@
 		"name": "Philana",
 		"email": "philanab@gmail.com",
 		"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
+		"org_pts": 75,
+		"org_events": 4,
+		"coh_pts": 14,
+		"coh_events": 1,
 		"records": [{
 				"month": "Jan",
 				"year": 2024,
@@ -11,18 +15,27 @@
 				"notes": "",
 				"points": [{
 						"name": "Coach Call Scheduling",
+						"event-type": "cohort",
 						"value": 5,
 						"total": 5
 					},
 					{
 						"name": "Coach Call Attendance",
-						"value": 15,
+						"event-type": "cohort",
+						"value": 5,
 						"total": 10
 					},
 					{
 						"name": "Assignment Completed",
+						"event-type": "cohort",
 						"value": 0,
 						"total": 5
+					},
+					{
+						"name": "Recruiting",
+						"event-type": "org",
+						"value": 20,
+						"total": 20
 					}
 				]
 			},

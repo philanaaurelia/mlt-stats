@@ -38,6 +38,12 @@ class MLT_Data:
         "points": []
         }
         
+    def calculate_meter(self, fellow):
+        org_val = (fellow['org_pts'] / (fellow['org_events'] * 20.0)) * 0.65
+        print(fellow['org_pts'])
+        coh_val = (fellow['coh_pts'] / (fellow['coh_events'] * 20.0)) * 0.35
+        print(org_val)
+        return (org_val + coh_val) * 100
     
     def get_fellow_data(self, email):
         # Get JSON of fellows
@@ -48,9 +54,11 @@ class MLT_Data:
                 name = fellow['name']
                 profile = fellow['profile_url']
                 records = fellow["records"]
-                fellow_data = Fellow(name, email, profile, records)
+                fellow_data = Fellow(name, email, profile, records, self.calculate_meter(fellow))
                 return fellow_data
         return None
+        
+
         
     ''' def create_points(self):
         self.point = {"multipler": mult,
