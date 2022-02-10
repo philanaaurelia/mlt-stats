@@ -14,7 +14,7 @@ class MLT_Data:
         with open(str(myfile),'r+') as file:
             # First we load existing data into a dict.
             if len(file.readlines()) == 0:
-                data = {"fellows" : []}
+                data = {"members" : []}
                 json.dump(data, file, indent = 4)
                 
             # move cursor to beginning of file
@@ -27,9 +27,10 @@ class MLT_Data:
     def __str__(self):
         return "filename: " + self.filename + "\n";
         
-    def create_user(self, name, email):
+    def create_user(self, name, email, memtype):
         self.user = {"name": name,
         "email": email,
+        "type" : memtype,
         "record":[] }
     
     def create_record(self, month, year):
@@ -49,7 +50,7 @@ class MLT_Data:
         # Get JSON of fellows
         
         # search for fellow
-        for fellow in self.json_data['fellows']:
+        for fellow in self.json_data['members']:
             if fellow['email'] == email:
                 name = fellow['name']
                 profile = fellow['profile_url']

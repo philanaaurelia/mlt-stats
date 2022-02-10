@@ -14,7 +14,7 @@ app = flask.Flask(__name__)
 def main():
     # data = MLT_Data("fellow_data.json")
     data = MLT_Data("test.json")
-    fellow = data.get_fellow_data("philanab@gmail.com")
+    fellow = data.get_fellow_data("janedoe@gmail.com")
 
     return render_template('index.html', fellow_data = fellow)
     
