@@ -3,4 +3,4 @@ requests
 requests_oauthlib
 pathlib
 tweepy
-flask-googelogin
+flask-googlelogin
