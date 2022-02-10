@@ -23,7 +23,7 @@
       </div>
       <div class="column col-sm-8">
         <div class="card shadow"> <p class="default"> <h1>Status</h1>
-        <span>You are currently in
+        <span><center>You are currently in
         {% if fellow_data.meter_val > 98 %}
         <span style="color: #339900;font-weight: bold"> EXCELLENT </span>
 {% elif fellow_data.meter_val > 94%}
@@ -38,9 +38,10 @@
     <span style="color: #884400; font-weight: bold">POOR</span>
 {% endif %}
         
-        standing.</span></div>
+        standing.</center></span></div>
         <div class="card shadow">
-          Respect Meter: {{ '%0.2f' % fellow_data.meter_val|float }}% <br>
+          <h1>Respectability</h1>
+          <center>{{ '%0.2f' % fellow_data.meter_val|float }}%</center>
           <div class="progress">
             {% if fellow_data.meter_val > 10 %}
             <div class="progress-bar bg-prog1" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
@@ -60,17 +61,22 @@
             <div class="progress-bar bg-prog4" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             <div class="progress-bar bg-prog5" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             <div class="progress-bar bg-prog6" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            
             <div class="progress-bar bg-prog7" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            {% if fellow_data.meter_val >= 80 %}
             <div class="progress-bar bg-prog8" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            {% if fellow_data.meter_val > 90 %}
+            {% else %}
+            <div class="progress-bar bg-prog8" role="progressbar" style="width: {{fellow_data.meter_val % 80 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            {% endif %}
+            {% if fellow_data.meter_val >= 90 %}
             <div class="progress-bar bg-prog9" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% else %}
             <div class="progress-bar bg-prog9" role="progressbar" style="width: {{fellow_data.meter_val % 80 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-              {% if fellow_data.meter_val > 90 %}
+              {% if fellow_data.meter_val == 100 %}
             <div class="progress-bar bg-prog10" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% else %}
-            <div class="progress-bar bg-prog10" role="progressbar" style="width: 0%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-prog10" role="progressbar" style="width: {{fellow_data.meter_val % 90 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
           </div>
         </div>
