@@ -1,10 +1,17 @@
-body{
-    background-color:#f2f2f2;
+body {
+  background-color: #f2f2f2;
+  font-family: 'Mulish';
 }
 
-body, span, p {
-	font-family: 'Josefin Slab';
-	font-size: 22px;
+table tr td {
+  font-family: 'Mulish';
+  font-size: 14px;
+}
+
+span, p {
+  font-family: 'Mulish';
+  font-size: 18px;
+  color: #303030;
 }
 
 p.default {
@@ -25,37 +32,22 @@ p.default {
 
 .cont {
   position: absolute;
-/* 	border-radius: 10px;
-	box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-	min-height: 100px;
-	height: 90%;
-	width: 90%;
+  min-height: 100px;
+  height: 90%;
+  width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.tweet {
-    margin-top: 10px;
-	padding: 20px;
-	border-radius: 3%;
-	color: #333333;
-}
-
 img {
-    max-width: 380px;
-    max-height: 300px;
-}
-
-.artist {
-  border-radius: 50%;
-  max-width: 90px;
-  max-height: 90px;
+  max-width: 380px;
+  max-height: 300px;
 }
 
 .center-content {
   display: inline;
-    float: none;
+  float: none;
 }
 
 .profile {
@@ -64,14 +56,27 @@ img {
 }
 
 h1 {
-    line-height: .5em;
-    font-size: 22px;
+  line-height: 1em;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Zilla Slab';
+  font-weight: 800;
+  margin: 0;
 }
 
-h2
-{
-    font-size: 18px;
-    line-height: 1em;
+h2 {
+  font-size: 20px;
+  line-height: 1em;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 1em;
+  padding: 5px;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Mulish';
 }
 
 span.light {
@@ -80,7 +85,7 @@ span.light {
 
 span.bold {
   font-weight: 700;
-  font-family: 'Josefin Slab'; 
+  font-family: 'Josefin Slab';
   font-size: 22px;
 }
 

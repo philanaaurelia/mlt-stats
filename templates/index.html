@@ -1,7 +1,9 @@
 <html>
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500;600;700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700;800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/theme.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +22,23 @@
         <h2 style="padding-top: 25px; font-size: 24px">Hello, <strong>{{fellow_data.name}}!</strong></h2></center>
       </div>
       <div class="column col-sm-8">
-        <div class="card shadow"> <p class="default"> You are currently in
+        <div class="card shadow"> <p class="default"> <h1>Status</h1>
+        <span>You are currently in
         {% if fellow_data.meter_val > 98 %}
-        <span style="color: #339900;font-weight: bold"> Excellent </span>
+        <span style="color: #339900;font-weight: bold"> EXCELLENT </span>
 {% elif fellow_data.meter_val > 94%}
-    <span style="color: #448800; font-weight: bold">Great </span>
+    <span style="color: #448800; font-weight: bold">GREAT </span>
     {% elif fellow_data.meter_val > 85%}
-    <span style="color: #557700; font-weight: bold">Good </span>
+    <span style="color: #557700; font-weight: bold">GOOD </span>
         {% elif fellow_data.meter_val > 80%}
-    <span style="color: #666600; font-weight: bold">Fair </span>
+    <span style="color: #666600; font-weight: bold">FAIR</span>
     {% elif fellow_data.meter_val > 75%}
-    <span style="color: #775500; font-weight: bold">Weak</span>
+    <span style="color: #775500; font-weight: bold">WEAK</span>
 {% else %}
-    <span style="color: #884400; font-weight: bold"> Poor </span>
+    <span style="color: #884400; font-weight: bold">POOR</span>
 {% endif %}
         
-        standing.</p></div>
+        standing.</span></div>
         <div class="card shadow">
           Respect Meter: {{ '%0.2f' % fellow_data.meter_val|float }}% <br>
           <div class="progress">
@@ -73,19 +76,21 @@
         </div>
         <!-- edit this section --->
         <div class="card shadow">
-          Recent Activity
+          <h1>Recent Activity</h1>
+          Coming Soon!
         </div>
       </div>
     </div> <!-- End top row -->
     <div class="bottom row">
       <div class="column col-sm-4">
-        <div class="card shadow">Badges</div>
+        <div class="card shadow"><h1>Badges</h1>
+        Coming Soon!</div>
       </div>
       <div class="column col-sm-8">
-        <div class="card shadow"> All Activity <br>
+        <div class="card shadow"> <h1>All Activity </h1>
           <div style="height: 150px; overflow-y:scroll">
             {% for item in fellow_data.records %}
-            <p>Month: {{ item.month }} </p>
+            <h3>{{ item.month }} {{ item.year }}</h3>
             <table class="table table-bordered table-sm">
               <thead class="thead-light">
                 <tr>
