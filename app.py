@@ -35,7 +35,7 @@ def callback(token, userinfo, **params):
     login_user(user)
     session['token'] = json.dumps(token)
     session['extra'] = params.get('extra')
-    return redirect(params.get('next', url_for('/')))
+    return redirect(params.get('next', url_for('/home')))
     
     
 @app.route('/', methods = ['POST', 'GET'])
