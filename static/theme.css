@@ -40,6 +40,10 @@ p.default {
   transform: translate(-50%, -50%);
 }
 
+hr.solid {
+  border-top: 1px solid #404040;
+}
+
 img {
   max-width: 380px;
   max-height: 300px;

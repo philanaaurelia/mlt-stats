@@ -19,6 +19,10 @@ def main():
     return render_template('index.html', fellow_data = fellow)
     
     
+@app.route('/login', methods = ['POST', 'GET'])
+def login():
+    return render_template('login.html')
+    
 @app.route('/form', methods = ['POST', 'GET'])
 def form():
     return render_template('form.html')
