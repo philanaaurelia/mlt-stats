@@ -60,6 +60,10 @@ def home():
 @app.route('/oauth2callback')
 @oauth_authorized.connect_via(goog_blueprint)
 def google_logged_in(blueprint, token):
+    if not token:
+            flash("Failed to log in with {}".format(blueprint.name), 'danger')
+            return redirect(url_for('index'))
+                
     resp = blueprint.session.get('/oauth2/v2/userinfo')
     user_info = resp.json()
     print(user_info)
