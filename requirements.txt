@@ -2,5 +2,4 @@ flask
 requests
 requests_oauthlib
 pathlib
-tweepy
-flask-googlelogin
+flask_googlelogin
