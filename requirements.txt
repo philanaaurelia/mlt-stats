@@ -2,6 +2,6 @@ flask
 requests
 requests_oauthlib
 pathlib
-flask-googlelogin
 blinker
 flask-dance
+flask_login
