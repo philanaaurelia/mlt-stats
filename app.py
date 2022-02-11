@@ -49,7 +49,7 @@ def load_user(id):
     
 # index home page
 @app.route('/')
-def main():
+def index():
     google_data = None
     user_info_endpoint = '/oauth2/v2/userinfo'
     if current_user.is_authenticated and google.authorized:
@@ -71,7 +71,7 @@ def home():
 
         return render_template('home.html', fellow_data = fellow)
     else:
-        return redirect(url_for('main'))
+        return redirect(url_for('index'))
         
     
 @app.route('/oauth2callback')
@@ -91,14 +91,18 @@ def google_logged_in(blueprint, token):
     return redirect(url_for('home'))
     
 @app.route("/login")
-def index():
+def login():
     return redirect(url_for("google.login"))
 
     
 @app.route('/form', methods = ['POST', 'GET'])
 def form():
     return render_template('form.html')
-
+    
+@app.route('/signout')
+def signout():
+    session.pop('session_id')
+    return redirect(url_for("index"))
 
 app.run(
     port = int(os.getenv('PORT')),
