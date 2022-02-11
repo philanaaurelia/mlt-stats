@@ -41,7 +41,7 @@ def callback(token, userinfo, **params):
     db.session.add(user)
     db.session.flush()
     login_user(user)
-    return redirect(url_for('form'))
+    return redirect(url_for('home'))
     
     
 @app.route('/')
