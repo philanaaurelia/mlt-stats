@@ -35,8 +35,7 @@ GOOGLE_LOGIN_REDIRECT_URI='https://mlt-stats.herokuapp.com/oauth2callback'
 app.config['SECRET_KEY'] = SECRET_KEY
 goog_blueprint = make_google_blueprint(
     client_id= GOOGLE_LOGIN_CLIENT_ID,
-    client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
-    scope=["profile", "email"]
+    client_secret= GOOGLE_LOGIN_CLIENT_SECRET
 )
 
 login_manager = LoginManager()
@@ -44,6 +43,10 @@ login_manager.init_app(app)
 login_manager.login_view = 'google.login'
 
 app.register_blueprint(goog_blueprint)
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 @app.route('/home')
 def home():
