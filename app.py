@@ -10,8 +10,11 @@ from flask_login import (LoginManager, UserMixin, login_required, login_user, lo
                          current_user)
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
-    
+
+
 app = flask.Flask(__name__)
+
+
 
 SECRET_KEY='AIzaSyAuQo0MS-TgejKC75M9uGTeU0WXnyxeOww'
 GOOGLE_LOGIN_CLIENT_ID="415070769795-0a1chfviiumsdsv7ov2fcaqdlotut530.apps.googleusercontent.com"
@@ -21,15 +24,14 @@ GOOGLE_LOGIN_REDIRECT_URI='https://mlt-stats.herokuapp.com/oauth2callback'
 app.config['SECRET_KEY'] = SECRET_KEY
 goog_blueprint = make_google_blueprint(
     client_id= GOOGLE_LOGIN_CLIENT_ID,
-    client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
-    reprompt_consent=True
+    client_secret= GOOGLE_LOGIN_CLIENT_SECRET
 )
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'google.login'
 
-app.register_blueprint(goog_blueprint)
+app.register_blueprint(goog_blueprint, url_prefix="/login")
 
 @app.route('/home')
 def home():
@@ -70,13 +72,21 @@ def google_logged_in(blueprint, token):
     
     # return redirect(url_for('home'))
     
-@app.route('/')
+@app.route("/")
+def index():
+    if not google.authorized:
+        return redirect(url_for("google.login"))
+    resp = google.get("/oauth2/v1/userinfo")
+    assert resp.ok, resp.text
+    return "You are {email} on Google".format(email=resp.json()["email"])
+    
+@app.route('/OG')
 def main():
     google_data = None
     user_info_endpoint = '/oauth2/v2/userinfo'
     if current_user.is_authenticated and google.authorized:
         google_data = google.get(user_info_endpoint).json()
-    return render_template('login.html', google_url = "/google", google_data = google_data)
+    return render_template('login.html', google_url = "/login", google_data = google_data)
     
 
     
