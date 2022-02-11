@@ -2,9 +2,7 @@ import flask
 import os 
 import random
 import json
-
-from flask import render_template
-from flask import session, redirect, url_for
+from flask import session, redirect, url_for, request, render_template
 from mlt_data import *
 from flask_login import (LoginManager, UserMixin, login_required, login_user, logout_user,
                          current_user)
@@ -36,7 +34,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 goog_blueprint = make_google_blueprint(
     client_id= GOOGLE_LOGIN_CLIENT_ID,
     client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
-    scope= "openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+    scope= ["openid","https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
 )
 
 login_manager = LoginManager()
@@ -51,11 +49,17 @@ def load_user(id):
 
 @app.route('/home')
 def home():
-    # data = MLT_Data("fellow_data.json")
-    data = MLT_Data("test.json")
-    fellow = data.get_fellow_data("janedoe@gmail.com")
+    if 'google_id' in request.args:
+        # parameter 'varname' is specified
+        google_id = request.args.get('google_id')
+            # parameter 'varname' is NOT specified
+        # data = MLT_Data("fellow_data.json")
+        data = MLT_Data("test.json")
+        fellow = data.get_fellow_data("janedoe@gmail.com")
 
-    return render_template('index.html', fellow_data = fellow)
+        return render_template('home.html', fellow_data = fellow)
+    else:
+        return redirect(url_for('main'))
     
     
 @app.route('/oauth2callback')
@@ -68,9 +72,7 @@ def google_logged_in(blueprint, token):
     resp = blueprint.session.get('/oauth2/v2/userinfo')
     user_info = resp.json()
     print(user_info)
-    
-
-    return redirect(url_for('home'))
+    return redirect(url_for('home', google_id = 7203085481))
     
 @app.route("/login")
 def index():
@@ -86,7 +88,7 @@ def main():
     user_info_endpoint = '/oauth2/v2/userinfo'
     if current_user.is_authenticated and google.authorized:
         google_data = google.get(user_info_endpoint).json()
-    return render_template('login.html', google_url = "/login", google_data = google_data)
+    return render_template('index.html', google_url = "/login", google_data = google_data)
     
 
     
