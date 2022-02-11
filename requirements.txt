@@ -2,4 +2,6 @@ flask
 requests
 requests_oauthlib
 pathlib
-flask-googlelogin==0.1.7
+flask-googlelogin
+blinker
+flask-dance
