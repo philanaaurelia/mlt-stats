@@ -2,4 +2,4 @@ flask
 requests
 requests_oauthlib
 pathlib
-flask_googlelogin
+flask-googlelogin==0.2.1
