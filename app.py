@@ -12,7 +12,18 @@ from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
 
 
+class ReverseProxied(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        scheme = environ.get('HTTP_X_FORWARDED_PROTO')
+        if scheme:
+            environ['wsgi.url_scheme'] = scheme
+        return self.app(environ, start_response)
+
 app = flask.Flask(__name__)
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 
 
@@ -24,14 +35,15 @@ GOOGLE_LOGIN_REDIRECT_URI='https://mlt-stats.herokuapp.com/oauth2callback'
 app.config['SECRET_KEY'] = SECRET_KEY
 goog_blueprint = make_google_blueprint(
     client_id= GOOGLE_LOGIN_CLIENT_ID,
-    client_secret= GOOGLE_LOGIN_CLIENT_SECRET
+    client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
+    scope=["profile", "email"]
 )
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'google.login'
 
-app.register_blueprint(goog_blueprint, url_prefix="/login")
+app.register_blueprint(goog_blueprint)
 
 @app.route('/home')
 def home():
@@ -48,31 +60,11 @@ def google_logged_in(blueprint, token):
     resp = blueprint.session.get('/oauth2/v2/userinfo')
     user_info = resp.json()
     print(user_info)
-    user_id = str(user_info['id'])
-    oauth = OAuth.query.filter_by(provider=blueprint.name,
-                                  provider_user_id=user_id).first()
-    if not oauth:
-        oauth = OAuth(provider=blueprint.name,
-                      provider_user_id=user_id,
-                      token=token)
-    else:
-        oauth.token = token
-        db.session.add(oauth)
-        db.session.commit()
-        login_user(oauth.user)
-    if not oauth.user:
-        user = User(email=user_info["email"],
-                    name=user_info["name"])
-        oauth.user = user
-        db.session.add_all([user, oauth])
-        db.session.commit()
-        login_user(user)
+    
 
-    return False
+    return redirect(url_for('home'))
     
-    # return redirect(url_for('home'))
-    
-@app.route("/")
+@app.route("/login")
 def index():
     if not google.authorized:
         return redirect(url_for("google.login"))
@@ -80,7 +72,7 @@ def index():
     assert resp.ok, resp.text
     return "You are {email} on Google".format(email=resp.json()["email"])
     
-@app.route('/OG')
+@app.route('/')
 def main():
     google_data = None
     user_info_endpoint = '/oauth2/v2/userinfo'
@@ -93,6 +85,8 @@ def main():
 @app.route('/form', methods = ['POST', 'GET'])
 def form():
     return render_template('form.html')
+    
+
 
 app.run(
     port = int(os.getenv('PORT')),
