@@ -46,12 +46,24 @@ app.register_blueprint(goog_blueprint)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
+    
+# index home page
+@app.route('/')
+def main():
+    google_data = None
+    user_info_endpoint = '/oauth2/v2/userinfo'
+    if current_user.is_authenticated and google.authorized:
+        google_data = google.get(user_info_endpoint).json()
+    return render_template('index.html', google_url = "/login")
+    
 
+# profile home page
 @app.route('/home')
 def home():
-    if 'google_id' in request.args:
+    if session.get('session_id') and session['session_id']:
+        # if 'google_id' in request.args:
         # parameter 'varname' is specified
-        google_id = request.args.get('google_id')
+        # google_id = request.args.get('google_id')
             # parameter 'varname' is NOT specified
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
@@ -60,42 +72,32 @@ def home():
         return render_template('home.html', fellow_data = fellow)
     else:
         return redirect(url_for('main'))
-    
+        
     
 @app.route('/oauth2callback')
 @oauth_authorized.connect_via(goog_blueprint)
 def google_logged_in(blueprint, token):
     if not token:
-            flash("Failed to log in with {}".format(blueprint.name), 'danger')
-            return redirect(url_for('index'))
+        flash("Failed to log in with {}".format(blueprint.name), 'danger')
+        return redirect(url_for('index'))
                 
+    session["session_id"] = os.urandom(16);
     resp = blueprint.session.get('/oauth2/v2/userinfo')
+    # https://oauth2.googleapis.com/tokeninfo?id_token=XYZ123
+    # resp = google.get("/oauth2/v1/userinfo")
+    # token_url="https://accounts.google.com/o/oauth2/token",
     user_info = resp.json()
     print(user_info)
-    return redirect(url_for('home', google_id = 7203085481))
+    return redirect(url_for('home'))
     
 @app.route("/login")
 def index():
-    if not google.authorized:
-        return redirect(url_for("google.login"))
-    resp = google.get("/oauth2/v1/userinfo")
-    assert resp.ok, resp.text
-    return "You are {email} on Google".format(email=resp.json()["email"])
-    
-@app.route('/')
-def main():
-    google_data = None
-    user_info_endpoint = '/oauth2/v2/userinfo'
-    if current_user.is_authenticated and google.authorized:
-        google_data = google.get(user_info_endpoint).json()
-    return render_template('index.html', google_url = "/login", google_data = google_data)
-    
+    return redirect(url_for("google.login"))
 
     
 @app.route('/form', methods = ['POST', 'GET'])
 def form():
     return render_template('form.html')
-    
 
 
 app.run(
