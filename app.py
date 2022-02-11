@@ -23,8 +23,8 @@ class ReverseProxied(object):
         return self.app(environ, start_response)
 
 app = flask.Flask(__name__)
+# needed to make sure https is sent to google
 app.wsgi_app = ReverseProxied(app.wsgi_app)
-
 
 
 SECRET_KEY='AIzaSyAuQo0MS-TgejKC75M9uGTeU0WXnyxeOww'
@@ -35,7 +35,8 @@ GOOGLE_LOGIN_REDIRECT_URI='https://mlt-stats.herokuapp.com/oauth2callback'
 app.config['SECRET_KEY'] = SECRET_KEY
 goog_blueprint = make_google_blueprint(
     client_id= GOOGLE_LOGIN_CLIENT_ID,
-    client_secret= GOOGLE_LOGIN_CLIENT_SECRET
+    client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
+    scope= "openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 )
 
 login_manager = LoginManager()
