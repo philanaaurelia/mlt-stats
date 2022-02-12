@@ -59,10 +59,15 @@ img {
   height: 175px;
 }
 
+.btn-signout {
+  margin-top: 10px;
+  background-color: #ec950c;
+  color: #FFFFFF;
+}
+
 h1 {
   line-height: 1em;
   font-size: 24px;
-  padding-top: 10px;
   padding-bottom: 10px;
   font-family: 'Zilla Slab';
   font-weight: 800;
@@ -101,9 +106,7 @@ span.heavy {
 
 .card {
   margin-bottom: 15px;
-  padding: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
 }
 
 /* Progress Bar */

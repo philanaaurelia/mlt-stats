@@ -9,9 +9,9 @@
 			"email": "janedoe@gmail.com",
 			"type": "fellow",
 			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
-			"org_pts": 80,
+			"org_pts": 32,
 			"org_events": 4,
-			"coh_pts": 20,
+			"coh_pts": 10,
 			"coh_events": 1,
 			"records": [{
 					"month": "Jan",

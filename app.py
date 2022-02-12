@@ -6,7 +6,7 @@ from flask import session, redirect, url_for, request, render_template
 from mlt_data import *
 from flask_login import (LoginManager, UserMixin, login_required, login_user, logout_user,
                          current_user)
-from flask_dance.contrib.google import make_google_blueprint, google
+from flask_dance.contrib.slack import make_slack_blueprint, slack
 from flask_dance.consumer import oauth_authorized
 
 
@@ -24,24 +24,23 @@ app = flask.Flask(__name__)
 # needed to make sure https is sent to google
 app.wsgi_app = ReverseProxied(app.wsgi_app)
 
-
 SECRET_KEY='AIzaSyAuQo0MS-TgejKC75M9uGTeU0WXnyxeOww'
-GOOGLE_LOGIN_CLIENT_ID="415070769795-0a1chfviiumsdsv7ov2fcaqdlotut530.apps.googleusercontent.com"
-GOOGLE_LOGIN_CLIENT_SECRET='zT2-uqTe1wqdJGWUs7Y8LZvX'
-GOOGLE_LOGIN_REDIRECT_URI='https://mlt-stats.herokuapp.com/oauth2callback'
+SLACK_LOGIN_CLIENT_ID="971843552369.3095825635154"
+SLACK_LOGIN_CLIENT_SECRET = "82c0f6f100d19d43c971b8fd70db5e9a"
 
-app.config['SECRET_KEY'] = SECRET_KEY
-goog_blueprint = make_google_blueprint(
-    client_id= GOOGLE_LOGIN_CLIENT_ID,
-    client_secret= GOOGLE_LOGIN_CLIENT_SECRET,
-    scope= ["openid","https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
+slck_blueprint = make_slack_blueprint(
+    client_id= SLACK_LOGIN_CLIENT_ID,
+    client_secret= SLACK_LOGIN_CLIENT_SECRET,
+    scope= ["openid,email,profile"]
 )
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'google.login'
+login_manager.login_view = 'slack.login'
 
-app.register_blueprint(goog_blueprint)
+
+app.config['SECRET_KEY'] = SECRET_KEY
+app.register_blueprint(slck_blueprint)
 
 @login_manager.user_loader
 def load_user(id):
@@ -50,11 +49,11 @@ def load_user(id):
 # index home page
 @app.route('/')
 def index():
-    google_data = None
-    user_info_endpoint = '/oauth2/v2/userinfo'
-    if current_user.is_authenticated and google.authorized:
-        google_data = google.get(user_info_endpoint).json()
-    return render_template('index.html', google_url = "/login")
+    # google_data = None
+    # user_info_endpoint = '/oauth2/v2/userinfo'
+    # if current_user.is_authenticated and google.authorized:
+    #    google_data = google.get(user_info_endpoint).json()
+    return render_template('index.html', google_url = "/glogin", slack_url = "/slogin")
     
 
 # profile home page
@@ -62,9 +61,7 @@ def index():
 def home():
     if session.get('session_id') and session['session_id']:
         # if 'google_id' in request.args:
-        # parameter 'varname' is specified
-        # google_id = request.args.get('google_id')
-            # parameter 'varname' is NOT specified
+            # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
         fellow = data.get_fellow_data("janedoe@gmail.com")
@@ -73,26 +70,25 @@ def home():
     else:
         return redirect(url_for('index'))
         
-    
-@app.route('/oauth2callback')
-@oauth_authorized.connect_via(goog_blueprint)
-def google_logged_in(blueprint, token):
+
+# @oauth_authorized.connect_via(goog_blueprint)
+@oauth_authorized.connect_via(slck_blueprint)
+def logged_in(blueprint, token):
+    print(token)
     if not token:
         flash("Failed to log in with {}".format(blueprint.name), 'danger')
         return redirect(url_for('index'))
                 
     session["session_id"] = os.urandom(16);
-    resp = blueprint.session.get('/oauth2/v2/userinfo')
-    # https://oauth2.googleapis.com/tokeninfo?id_token=XYZ123
-    # resp = google.get("/oauth2/v1/userinfo")
-    # token_url="https://accounts.google.com/o/oauth2/token",
+    resp = slack.get("openid.connect.userInfo")
     user_info = resp.json()
     print(user_info)
     return redirect(url_for('home'))
+
     
-@app.route("/login")
-def login():
-    return redirect(url_for("google.login"))
+@app.route("/slogin")
+def slogin():
+    return redirect(url_for("slack.login"))
 
     
 @app.route('/form', methods = ['POST', 'GET'])
