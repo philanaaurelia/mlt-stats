@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -10,68 +9,93 @@
 
 <body>
   <form action="/result" method="POST">
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    <div class="form-row" style="margin: 0px 10px 10px 10px">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Name</label>
       </div>
-    </div>
-    
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
-      <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Jane Doe">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Date</label>
       </div>
-    </div>
-
-    <label for="exampleDataList" class="form-label">Month</label>
-    <input class="form-control" list="monthOptions" id="month_text" placeholder="Type to search...">
-    <datalist id="monthOptions">
-      <option value="January">
-      <option value="February">
-      <option value="March">
-      <option value="April">
-      <option value="May">
-    </datalist>
-
-    <label for="exampleDataList" class="form-label">Year</label>
-    <input class="form-control" list="yearOptions" id="year_num" placeholder="Type to search...">
-    <datalist id="yearOptions" name="yearOption">
-      <option value="2024">
-      <option value="2023">
-    </datalist>
-
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Call Sched. Pts</label>
       </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">On-Time Coach Call Schedule</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="call-schedule" value="5">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Call Atten. Pts</label>
       </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Coach Call Attendence</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" value="10">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Assign. Pts</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Event Name">
+      </div>
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Notes</label>
       </div>
     </div>
 
-    <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Monthly Assignment Completed</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" value="5">
+    <div class="form-row" style="margin: 0 10 10 10">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Jane Doe</label>
+      </div>
+      <div class="col">
+        <input class="form-control" list="monthOptions" id="month_text" placeholder="Type to search...">
+        <datalist id="monthOptions">
+          <option value="Jan '22">
+          <option value="Feb '22">
+          <option value="Mar '22">
+          <option value="April">
+          <option value="May">
+        </datalist>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=5>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=10>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=5>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="20">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control">
       </div>
     </div>
 
-    <!-- <p>Name <input type = "text" name = "Name" /></p>
-   <p>Physics <input type = "text" name = "Physics" /></p>
-   <p>Chemistry <input type = "text" name = "chemistry" /></p>
-   <p>Maths <input type ="text" name = "Mathematics" /></p> -->
-   <p><input type = "submit" value = "Save" /></p>
+
+    <div class="form-row" style="margin: 0px 10px 10px 10px">
+      <div class="col">
+        <label for="staticEmail" class="col-form-label">Erin Moe</label>
+      </div>
+      <div class="col">
+        <input class="form-control" list="monthOptions" id="month_text" placeholder="Type to search...">
+        <datalist id="monthOptions">
+          <option value="Jan '22">
+          <option value="Feb '22">
+          <option value="Mar '22">
+          <option value="April">
+          <option value="May">
+        </datalist>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=5>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=10>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" value=5>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="20">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <center><input type="submit" value="Save" class="btn btn-success" style="width: 125px"/></center>
   </form>
 </body>
 

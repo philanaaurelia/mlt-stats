@@ -1,13 +1,14 @@
 {
 	"members": [{
 			"name": "Philana",
-			"email": "philanab@gmail.com",
+			"email": "pbenton@mlt.org",
 			"type": "coach"
 		},
 		{
 			"name": "Jane",
 			"email": "janedoe@gmail.com",
 			"type": "fellow",
+			"coach": "pbenton@mlt.org"
 			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
 			"org_pts": 32,
 			"org_events": 4,
