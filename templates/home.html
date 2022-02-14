@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="/static/theme.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <title>
     MLT | Stats
   </title>
@@ -139,7 +138,7 @@
         <div class="card shadow"> <h1>All Activity </h1>
           <div style="height: 150px; overflow-y:scroll">
             {% for item in fellow_data.records %}
-            <h3>{{ item.month }} {{ item.year }}</h3>
+            <h3>{{ item.date }}</h3>
             <table class="table table-bordered table-sm">
               <thead class="thead-light">
                 <tr>

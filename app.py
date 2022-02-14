@@ -64,9 +64,12 @@ def home():
             # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
-        fellow = data.get_fellow_data("janedoe@gmail.com")
-
-        return render_template('home.html', fellow_data = fellow)
+        member = data.get_member_data("pbenton@mlt.org")
+        
+        if member.role == "coach":
+            return render_template("overview.html")
+        else: 
+            return render_template('home.html', fellow_data = fellow)
     else:
         return redirect(url_for('index'))
         

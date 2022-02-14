@@ -2,9 +2,10 @@ import json
 import random
 import requests
 
-class Fellow:
-    def __init__(self, name, email, profile, records, meter):
+class Member:
+    def __init__(self, name, role, email, profile, records, meter):
         self.name = name
+        self.role = role
         self.email = email
         self.profile= profile
         self.records = records

@@ -2,21 +2,20 @@
 	"members": [{
 			"name": "Philana",
 			"email": "pbenton@mlt.org",
-			"type": "coach"
+			"role": "coach"
 		},
 		{
 			"name": "Jane",
 			"email": "janedoe@gmail.com",
-			"type": "fellow",
-			"coach": "pbenton@mlt.org"
+			"role": "fellow",
+			"coach": "pbenton@mlt.org",
 			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
 			"org_pts": 32,
 			"org_events": 4,
-			"coh_pts": 10,
+			"coh_pts": 20,
 			"coh_events": 1,
 			"records": [{
-					"month": "Jan",
-					"year": 2024,
+					"date": "Jan 2024",
 					"multiplier": 1,
 					"percentage": 100,
 					"notes": "",
@@ -47,8 +46,7 @@
 					]
 				},
 				{
-					"month": "Dec",
-					"year": 2023,
+					"date": "Dec 2023",
 					"multiplier": 1,
 					"percentage": 100,
 					"notes": "",
@@ -70,8 +68,7 @@
 					]
 				},
 				{
-					"month": "Nov",
-					"year": 2023,
+					"date": "Nov 2023",
 					"multiplier": 1,
 					"percentage": 100,
 					"notes": "",
@@ -93,8 +90,7 @@
 					]
 				},
 				{
-					"month": "Oct",
-					"year": 2023,
+					"date": "Oct 2023",
 					"multiplier": 1,
 					"percentage": 100,
 					"notes": "",
