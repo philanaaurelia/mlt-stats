@@ -75,6 +75,21 @@ class MLT_Data:
                     return member_data
         return None
         
+    def get_fellows_data(self, email):
+        # Get JSON of fellows
+        fellows = []
+        
+        if not self.json_data:
+            self.load_json()
+            
+        for member in self.json_data['members']:
+            coach = member['coach'] if 'coach' in member else None
+            
+            if coach == email:
+                fellows.append(member)
+            
+        return fellows
+        
 
         
     def add_points(self, name, points):

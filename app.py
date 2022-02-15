@@ -64,17 +64,17 @@ def home():
             # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
-        member = data.get_member_data("pbenton@mlt.org")
+        member = data.get_member_data("janedoe@gmail.com")
         
         if member.role == "coach":
-            return render_template("overview.html")
+            fellows = data.get_fellows_data(member.email)
+            return render_template("form.html", fellows = fellows)
         else: 
-            return render_template('home.html', fellow_data = fellow)
+            return render_template('home.html', fellow_data = member)
     else:
         return redirect(url_for('index'))
         
-
-# @oauth_authorized.connect_via(goog_blueprint)
+        
 @oauth_authorized.connect_via(slck_blueprint)
 def logged_in(blueprint, token):
     print(token)

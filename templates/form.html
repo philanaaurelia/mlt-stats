@@ -1,102 +1,91 @@
 <html>
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700;800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/theme.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     MLT | Form
   </title>
 </head>
 
 <body>
-  <form action="/save" method="POST">
-    <div class="form-row" style="margin: 0px 10px 10px 10px">
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Name</label>
-      </div>
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Date</label>
-      </div>
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Call Sched. Pts</label>
-      </div>
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Call Atten. Pts</label>
-      </div>
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Assign. Pts</label>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Event Name">
-      </div>
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Notes</label>
-      </div>
-    </div>
+  <div class="cont">
+    <form action="/refresh" method="POST" style="width: 375px">
+      <div class="form-row" style="margin: 0px 10px 10px 10px">
+        <div class="col">
 
-    <div class="form-row" style="margin: 0 10 10 10">
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Jane Doe</label>
+          <select id="inputState" class="form-control">
+            <option selected>Jan '22</option>
+            <option> Feb '22</option>
+            <option> Mar '22</option>
+            <option> Apr '22</option>
+          </select>
+        </div>
+        <div class="col">
+          <input type="submit" value="Update Date" class="btn btn-success" style="width: 125px" /></center>
+        </div>
       </div>
-      <div class="col">
-        <input class="form-control" list="monthOptions" id="month_text" placeholder="Type to search...">
-        <datalist id="monthOptions">
-          <option value="Jan '22">
-          <option value="Feb '22">
-          <option value="Mar '22">
-          <option value="April">
-          <option value="May">
-        </datalist>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=5>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=10>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=5>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="20">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control">
-      </div>
-    </div>
+    </form>
+    <div class="card">
+      <form action="/save" method="POST">
+        <div class="form-row" style="margin: 0px 10px 10px 10px">
+          <div class="col-2">
+            <label for="staticEmail" class="col-form-label">Name</label>
+          </div>
+          <div class="col">
+            <label for="staticEmail" class="col-form-label">Call Sched. Pts</label>
+          </div>
+          <div class="col">
+            <label for="staticEmail" class="col-form-label">Call Atten. Pts</label>
+          </div>
+          <div class="col">
+            <label for="staticEmail" class="col-form-label">Assign. Pts</label>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Event Name">
+          </div>
+          <div class="col-4">
+            <label for="staticEmail" class="col-form-label">Notes</label>
+          </div>
+        </div>
 
+        {% for fellow in fellows %}
 
-    <div class="form-row" style="margin: 0px 10px 10px 10px">
-      <div class="col">
-        <label for="staticEmail" class="col-form-label">Erin Moe</label>
-      </div>
-      <div class="col">
-        <input class="form-control" list="monthOptions" id="month_text" placeholder="Type to search...">
-        <datalist id="monthOptions">
-          <option value="Jan '22">
-          <option value="Feb '22">
-          <option value="Mar '22">
-          <option value="April">
-          <option value="May">
-        </datalist>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=5>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=10>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" value=5>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="20">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control">
-      </div>
+        <div class="form-row" style="margin: 0 10 10 10">
+          <div class="col-2">
+            <label for="staticEmail" class="col-form-label">{{ fellow.name }}</label>
+          </div>
+          <div class="col">
+            {% if variable is defined %}
+            <input type="text" class="form-control" value=5>
+            {% else %}
+            <input type="text" class="form-control" value=5>
+            {% endif %}
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" value=10>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" value=5>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Max 20">
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+        {% endfor %}
+
+        <center><input type="submit" value="Save" class="btn btn-success" style="width: 125px" /></center>
+      </form>
     </div>
-    <center><input type="submit" value="Save" class="btn btn-success" style="width: 125px"/></center>
-  </form>
+  </div>
 </body>
 
 </html>

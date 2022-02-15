@@ -151,7 +151,11 @@
                 {% for point in item.points %}
                 <tr>
                   <td>{{ point.name }}</td>
+                  {% if point.value is defined %}
                   <td>{{ point.value }} / {{ point.total }} </td>
+                  {% else %}
+                  <td>- / {{ point.total }}</td>
+                  {% endif %}
                 </tr>
                 {% endfor %}
               </tbody>
