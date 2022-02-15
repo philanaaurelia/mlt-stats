@@ -64,7 +64,7 @@ def home():
             # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
-        member = data.get_member_data("pbenton@mlt.org")
+        member = data.get_member_data("janedoe@gmail.com")
         
         if member.role == "coach":
             fellows = data.get_fellows_data(member.email)
