@@ -59,14 +59,23 @@
           <div class="col-2">
             <label for="staticEmail" class="col-form-label">{{ fellow.name }}</label>
           </div>
+          {% for record in fellow.records %}
+            {% for point in record.points %}
+            {% if record.date == 'Oct 2023' %}
           <div class="col">
-            {% if variable is defined %}
-            <input type="text" class="form-control" value=5>
+            
+            {% if point.value is defined %}
+            <input type="text" class="form-control" value= {{point.value}} style="background-color: rgb(80, 185, 72, 0.2)">
             {% else %}
-            <input type="text" class="form-control" value=5>
+            <input type="text" class="form-control" value= {{point.total}} style="background-color: rgb(243, 130, 38, 0.5)">
             {% endif %}
           </div>
-          <div class="col">
+          {% endif %}
+          
+          {% endfor %}
+          {% endfor %}
+          
+          <!-- <div class="col">
             <input type="text" class="form-control" value=10>
           </div>
           <div class="col">
@@ -74,7 +83,7 @@
           </div>
           <div class="col">
             <input type="text" class="form-control" placeholder="Max 20">
-          </div>
+          </div> -->
           <div class="col-4">
             <input type="text" class="form-control">
           </div>
