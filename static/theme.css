@@ -18,6 +18,11 @@ p.default {
   margin: 0px;
 }
 
+p.normal {
+  font-size: 15px;
+  margin: 0px;
+}
+
 .column {
   float: left;
   height: 50%;
@@ -96,6 +101,19 @@ h3 {
   font-weight: 600;
   text-align: center;
   font-family: 'Mulish';
+}
+
+
+.clr-excellent {
+  color: #339900;
+}
+
+.clr-great {
+ color: #448800;
+}
+
+.clr-good {
+  color: #557700;
 }
 
 span.light {

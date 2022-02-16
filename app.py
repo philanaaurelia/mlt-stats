@@ -53,7 +53,7 @@ def index():
     # user_info_endpoint = '/oauth2/v2/userinfo'
     # if current_user.is_authenticated and google.authorized:
     #    google_data = google.get(user_info_endpoint).json()
-    return render_template('index.html', google_url = "/glogin", slack_url = "/slogin")
+    return render_template('index.html', slack_url = "/slogin")
    
 # profile home page
 @app.route('/sample_home')
@@ -76,8 +76,9 @@ def home():
             return "User NOT FOUND"
         
         if member.role == "coach":
-            fellows = data.get_fellows_data(member.email)
-            return render_template("overview.html", coach_data = member, fellows = fellows, record_url  = url_for('record'))
+            # fellows = data.get_fellows_data(member.email)
+            fellows = data.get_fellows_data("all") # dummy variable for testing
+            return render_template("overview.html", coach_data = member, fellows = fellows)
         else: 
             return render_template('home.html', fellow_data = member)
     else:
@@ -108,6 +109,14 @@ def slogin():
     
 @app.route('/record', methods = ['POST', 'GET'])
 def record():
+    if session.get('session_id') and session['session_id']:
+        if session.get('email') and session['email']: # update this to look for coach
+            data = MLT_Data("test.json")
+            # fellows = data.get_fellows_data(member.email)
+            fellows = data.get_fellows_data("all") # dummy variable for testing
+            return render_template("form.html", fellows = fellows)
+    
+    
     return render_template('form.html')
     
 @app.route('/signout')

@@ -86,7 +86,8 @@ class MLT_Data:
             coach = member['coach'] if 'coach' in member else None
             
             if coach == email:
-                fellows.append(member)
+                member_data = self.get_member_data(member['email'])
+                fellows.append(member_data)
             
         return fellows
         

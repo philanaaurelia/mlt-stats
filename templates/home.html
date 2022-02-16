@@ -25,11 +25,11 @@
         <div class="card shadow"> <p class="default"> <h1>Status</h1>
         <span><center>You are currently in
         {% if fellow_data.meter_val > 98 %}
-        <span style="color: #339900;font-weight: bold"> EXCELLENT </span>
+        <span class="clr-excellent" style="font-weight: bold"> EXCELLENT </span>
 {% elif fellow_data.meter_val > 94%}
-    <span style="color: #448800; font-weight: bold">GREAT </span>
+    <span class="clr-great" style="font-weight: bold">GREAT </span>
     {% elif fellow_data.meter_val > 85%}
-    <span style="color: #557700; font-weight: bold">GOOD </span>
+    <span class="clr-good" style="font-weight: bold">GOOD </span>
         {% elif fellow_data.meter_val > 80%}
     <span style="color: #666600; font-weight: bold">FAIR</span>
     {% elif fellow_data.meter_val > 75%}

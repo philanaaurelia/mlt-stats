@@ -13,9 +13,8 @@
 </head>
 
 <body>
-  {% with var_1=123, var_2="value 2", var_3=500 %}
   {% include "coach_nav.html" %}
-  {% endwith %}
+
   <div class="coach-cont">
     <form action="/refresh" method="POST" style="width: 375px">
       <div class="form-row" style="margin: 0px 10px 10px 10px">
@@ -76,6 +75,13 @@
           {% endif %}
           
           {% endfor %}
+          {% if record.points|length < 4 %}
+          {% if record.date == 'Oct 2023' %}
+          <div class="col">
+          <input type="text" class="form-control" placeholder = 20 style="background-color: rgb(243, 130, 38, 0.5)">
+          </div>
+          {% endif %}
+          {% endif %}
           {% endfor %}
           
           <!-- <div class="col">

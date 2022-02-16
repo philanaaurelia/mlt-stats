@@ -14,14 +14,26 @@
 			"email": "mlilley@mlt.org",
 			"role": "coach"
 		},
-		
-		
-		
 		{
-			"name": "Jane",
+			"name": "Linda",
+			"email": "ltobia@mlt.org@mlt.org",
+			"role": "coach"
+		},
+		{
+			"name": "James",
+			"email": "jsilva@mlt.org",
+			"role": "coach"
+		},
+		{
+			"name": "Joel",
+			"email": "jpratt@mlt.org",
+			"role": "coach"
+		},
+		{
+			"name": "Sample 1",
 			"email": "janedoe@gmail.com",
 			"role": "fellow",
-			"coach": "pbenton@mlt.org",
+			"coach": "all",
 			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
 			"org_pts": 32,
 			"org_events": 4,
@@ -109,10 +121,121 @@
 					"notes": "",
 					"points": [{
 							"name": "Coach Call Scheduling",
+							"total": 5,
+							"value": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"total": 10,
+							"value": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"total": 5,
+							"value": 5
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sample 2",
+			"email": "nikkiayanna@gmail.com",
+			"role": "fellow",
+			"coach": "all",
+			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
+			"org_pts": 70,
+			"org_events": 4,
+			"coh_pts": 20,
+			"coh_events": 1,
+			"records": [{
+					"date": "Jan 2024",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"event-type": "cohort",
+							"value": 5,
 							"total": 5
 						},
 						{
 							"name": "Coach Call Attendance",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"event-type": "cohort",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Recruiting",
+							"event-type": "org",
+							"value": 20,
+							"total": 20
+						}
+					]
+				},
+				{
+					"date": "Dec 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Nov 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Oct 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 8,
 							"total": 10
 						},
 						{
@@ -124,12 +247,228 @@
 			]
 		},
 		{
-			"name": "Nikki Benton",
-			"email": "nikkiayanna@gmail.com",
+			"name": "Sample 3",
+			"email": "JaneDoe@gmail.com",
 			"role": "fellow",
-			"coach": "pbenton@mlt.org",
+			"coach": "all",
 			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
-			"org_pts": 32,
+			"org_pts": 55,
+			"org_events": 4,
+			"coh_pts": 15,
+			"coh_events": 1,
+			"records": [{
+					"date": "Jan 2024",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"event-type": "cohort",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Recruiting",
+							"event-type": "org",
+							"value": 20,
+							"total": 20
+						}
+					]
+				},
+				{
+					"date": "Dec 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Nov 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Oct 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 8,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"total": 5
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sample 4",
+			"email": "janiedoe@gmail.com",
+			"role": "fellow",
+			"coach": "all",
+			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
+			"org_pts": 72,
+			"org_events": 4,
+			"coh_pts": 15,
+			"coh_events": 1,
+			"records": [{
+					"date": "Jan 2024",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"event-type": "cohort",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Recruiting",
+							"event-type": "org",
+							"value": 20,
+							"total": 20
+						}
+					]
+				},
+				{
+					"date": "Dec 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Nov 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Oct 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 8,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"total": 5
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sample 5",
+			"email": "janiesmith@gmail.com",
+			"role": "fellow",
+			"coach": "all",
+			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
+			"org_pts": 77,
 			"org_events": 4,
 			"coh_pts": 20,
 			"coh_events": 1,
@@ -220,6 +559,115 @@
 						},
 						{
 							"name": "Coach Call Attendance",
+							"value": 8,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"total": 5
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sample 6",
+			"email": "janedoeai@gmail.com",
+			"role": "fellow",
+			"coach": "all",
+			"profile_url": "https://cdn-icons-png.flaticon.com/512/3006/3006854.png",
+			"org_pts": 80,
+			"org_events": 4,
+			"coh_pts": 20,
+			"coh_events": 1,
+			"records": [{
+					"date": "Jan 2024",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"event-type": "cohort",
+							"value": 5,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"event-type": "cohort",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Recruiting",
+							"event-type": "org",
+							"value": 20,
+							"total": 20
+						}
+					]
+				},
+				{
+					"date": "Dec 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Nov 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 0,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 10,
+							"total": 10
+						},
+						{
+							"name": "Assignment Completed",
+							"value": 5,
+							"total": 5
+						}
+					]
+				},
+				{
+					"date": "Oct 2023",
+					"multiplier": 1,
+					"percentage": 100,
+					"notes": "",
+					"points": [{
+							"name": "Coach Call Scheduling",
+							"value": 5,
+							"total": 5
+						},
+						{
+							"name": "Coach Call Attendance",
+							"value": 8,
 							"total": 10
 						},
 						{

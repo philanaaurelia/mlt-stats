@@ -1,23 +1,89 @@
 <html>
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;500;600;700;800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/theme.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include "headers.html" %}
 
   <title>
     MLT | Stats
   </title>
 </head>
+
 <body>
-{% with record_url = record_url, var_2="value 2", var_3=500 %}
   {% include "coach_nav.html" %}
-  {% endwith %}
   <br>
-  Hello, Coach {{coach_data.name }} !
-  
+  <div class="coach-cont container-fluid">
+    <h2 style="margin-Bottom: 20px">Hello, Coach <strong>{{coach_data.name }}</strong>! </h2>
+    <div class="card">
+
+      <div class="top row">
+        <div class="col">
+          <h1>Fellows of Concern</h1>
+        </div>
+      </div>
+      <div class="top row">
+        <div class="column col-sm-4">
+          <span> Probration (70 - 79.9%) </span> <br>
+          {% for fellow in fellows %}
+          {% if fellow.meter_val < 80 and fellow.meter_val >= 70 %}
+          <span>{{ fellow.name }} ({{ '%0.0f' % fellow.meter_val|float }}%) </span> <br>
+          {% endif %}
+          {%endfor %}
+        </div>
+        <div class="column col-sm-4">
+          <span> Need Probation (65 - 69.9%) </span> <br>
+           {% for fellow in fellows %}
+          {% if fellow.meter_val < 70 and fellow.meter_val >= 65 %}
+          <span>{{ fellow.name }} ({{ '%0.0f' % fellow.meter_val|float }}%) </span> <br>
+          {% endif %}
+          {%endfor %}
+        </div>
+        <div class="column col-sm-4">
+          <span> Need Dismissal (0 - 64.9%) </span> <br>
+           {% for fellow in fellows %}
+          {% if fellow.meter_val < 65%}
+          <p class="normal">{{ fellow.name }} ({{ '%0.0f' % fellow.meter_val|float }}%) </p>
+          {% endif %}
+          {%endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+
+      <div class="top row">
+        <div class="col">
+          <h1>Fellows on Track </h1>
+        </div>
+      </div>
+      <div class="top row">
+        <div class="column col-sm-4">
+          <h3 class="clr-excellent"> EXCELLENT (95 - 100%) </h3> 
+          {% for fellow in fellows %}
+          {% if fellow.meter_val > 95 %}
+          <p class="normal">{{ fellow.name }} ({{ '%0.0f' % fellow.meter_val|float }}%)</p>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="column col-sm-4">
+          <h3 class="clr-great"> GREAT (90 - 94.9%)</h3> 
+          {% for fellow in fellows %}
+          {% if fellow.meter_val >= 90 and fellow.meter_val < 95 %}
+          <p class="normal">{{ fellow.name }} ({{'%0.0f' % fellow.meter_val|float }}%) </p>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="column col-sm-4">
+          <h3 class="clr-good"> GOOD (80 - 90%)</h3>
+          {% for fellow in fellows %}
+          {% if fellow.meter_val >= 80 and fellow.meter_val < 90 %}
+          <p class="normal">{{ fellow.name }} ({{ '%0.0f' % fellow.meter_val|float }}%) </p>
+          {% endif %}
+          {%endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </head>
