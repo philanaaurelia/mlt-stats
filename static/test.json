@@ -554,16 +554,17 @@
 					"notes": "",
 					"points": [{
 							"name": "Coach Call Scheduling",
-							"value": 5,
+							"value": 4,
 							"total": 5
 						},
 						{
 							"name": "Coach Call Attendance",
-							"value": 8,
+							"value": 9,
 							"total": 10
 						},
 						{
 							"name": "Assignment Completed",
+							"value": 4,
 							"total": 5
 						}
 					]
@@ -667,12 +668,13 @@
 						},
 						{
 							"name": "Coach Call Attendance",
-							"value": 8,
+							"value": 10,
 							"total": 10
 						},
 						{
 							"name": "Assignment Completed",
-							"total": 5
+							"total": 5,
+							"value": 5
 						}
 					]
 				}

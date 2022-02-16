@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Zilla+Slab:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/theme.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
     MLT | Stats
@@ -16,29 +16,37 @@
 <body>
   <div class="cont container-fluid">
     <div class="top row">
-      <div class="column col-sm-4"><center>
-        <img src={{fellow_data.profile}} class="profile"/> <br>
-        <h2 style="padding-top: 25px; font-size: 24px">Hello, <strong>{{fellow_data.name}}!</strong></h2>
-        <a href="/signout"><button class="btn btn-signout" style="margin-bottom: 15px">Sign Out</button></a></center>
+      <div class="column col-sm-4">
+        <center>
+          <img src={{fellow_data.profile}} class="profile" /> <br>
+          <h2 style="padding-top: 25px; font-size: 24px">Hello, <strong>{{fellow_data.name}}!</strong></h2>
+          <a href="/signout"><button class="btn btn-signout" style="margin-bottom: 15px">Sign Out</button></a>
+        </center>
       </div>
       <div class="column col-sm-8">
-        <div class="card shadow"> <p class="default"> <h1>Status</h1>
-        <span><center>You are currently in
-        {% if fellow_data.meter_val > 98 %}
-        <span class="clr-excellent" style="font-weight: bold"> EXCELLENT </span>
-{% elif fellow_data.meter_val > 94%}
-    <span class="clr-great" style="font-weight: bold">GREAT </span>
-    {% elif fellow_data.meter_val > 85%}
-    <span class="clr-good" style="font-weight: bold">GOOD </span>
-        {% elif fellow_data.meter_val > 80%}
-    <span style="color: #666600; font-weight: bold">FAIR</span>
-    {% elif fellow_data.meter_val > 75%}
-    <span style="color: #775500; font-weight: bold">WEAK</span>
-{% else %}
-    <span style="color: #884400; font-weight: bold">POOR</span>
-{% endif %}
-        
-        standing.</center></span></div>
+        <div class="card shadow">
+          <p class="default">
+          <h1>Status</h1>
+          <span>
+            <center>You are currently in
+              {% if fellow_data.meter_val > 95 %}
+              <span class="clr-excellent" style="font-weight: bold"> EXCELLENT </span>
+              {% elif fellow_data.meter_val > 90%}
+              <span class="clr-great" style="font-weight: bold">GREAT </span>
+              {% elif fellow_data.meter_val > 80%}
+              <span class="clr-good" style="font-weight: bold">GOOD </span>
+              {% elif fellow_data.meter_val > 70%}
+              <span class="clr-fair" style="font-weight: bold">FAIR</span>
+              {% elif fellow_data.meter_val > 60%}
+              <span class="clr-weak" style="font-weight: bold">WEAK</span>
+              {% else %}
+              <span class="clr-poor" style="font-weight: bold">POOR</span>
+              {% endif %}
+
+              standing.
+            </center>
+          </span>
+        </div>
         <div class="card shadow">
           <h1>Respectability</h1>
           <center>{{ '%0.2f' % fellow_data.meter_val|float }}%</center>
@@ -48,7 +56,7 @@
             {% else %}
             <div class="progress-bar bg-prog1" role="progressbar" style="width: {{fellow_data.meter_val % 10 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 20 %}
             <div class="progress-bar bg-prog2" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 10 %}
@@ -56,7 +64,7 @@
             {% else %}
             <div class="progress-bar bg-prog2" role="progressbar" style="width: {{fellow_data.meter_val % 10 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 30 %}
             <div class="progress-bar bg-prog3" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 20 %}
@@ -64,7 +72,7 @@
             {% else %}
             <div class="progress-bar bg-prog3" role="progressbar" style="width: {{fellow_data.meter_val % 20 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 40 %}
             <div class="progress-bar bg-prog4" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 30 %}
@@ -72,7 +80,7 @@
             {% else %}
             <div class="progress-bar bg-prog4" role="progressbar" style="width: {{fellow_data.meter_val % 30 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 50 %}
             <div class="progress-bar bg-prog5" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 40 %}
@@ -80,7 +88,7 @@
             {% else %}
             <div class="progress-bar bg-prog5" role="progressbar" style="width: {{fellow_data.meter_val % 40 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 60 %}
             <div class="progress-bar bg-prog6" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 50 %}
@@ -88,7 +96,7 @@
             {% else %}
             <div class="progress-bar bg-prog6" role="progressbar" style="width: {{fellow_data.meter_val % 50 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 70 %}
             <div class="progress-bar bg-prog7" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 60 %}
@@ -96,7 +104,7 @@
             {% else %}
             <div class="progress-bar bg-prog7" role="progressbar" style="width: {{fellow_data.meter_val % 60 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 80 %}
             <div class="progress-bar bg-prog8" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 70 %}
@@ -104,7 +112,7 @@
             {% else %}
             <div class="progress-bar bg-prog8" role="progressbar" style="width: {{fellow_data.meter_val % 70 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val >= 90 %}
             <div class="progress-bar bg-prog9" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 80 %}
@@ -112,7 +120,7 @@
             {% else %}
             <div class="progress-bar bg-prog9" role="progressbar" style="width: {{fellow_data.meter_val % 80 }}%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% endif %}
-            
+
             {% if fellow_data.meter_val == 100 %}
             <div class="progress-bar bg-prog10" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
             {% elif fellow_data.meter_val < 90 %}
@@ -131,11 +139,14 @@
     </div> <!-- End top row -->
     <div class="bottom row">
       <div class="column col-sm-4">
-        <div class="card shadow"><h1>Badges</h1>
-        Coming Soon!</div>
+        <div class="card shadow">
+          <h1>Badges</h1>
+          Coming Soon!
+        </div>
       </div>
       <div class="column col-sm-8">
-        <div class="card shadow"> <h1>All Activity </h1>
+        <div class="card shadow">
+          <h1>All Activity </h1>
           <div style="height: 150px; overflow-y:scroll">
             {% for item in fellow_data.records %}
             <h3>{{ item.date }}</h3>

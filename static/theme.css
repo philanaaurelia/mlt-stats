@@ -116,6 +116,18 @@ h3 {
   color: #557700;
 }
 
+.clr-fair {
+  color: #666600;
+}
+
+.clr-weak {
+  color: #775500;
+}
+
+.clr-poor {
+  color: #884400;
+}
+
 span.light {
   font-weight: lighter;
 }
