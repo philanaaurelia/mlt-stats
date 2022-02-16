@@ -54,7 +54,13 @@ def index():
     # if current_user.is_authenticated and google.authorized:
     #    google_data = google.get(user_info_endpoint).json()
     return render_template('index.html', google_url = "/glogin", slack_url = "/slogin")
-    
+   
+# profile home page
+@app.route('/sample_home')
+def sample_home(): 
+    data = MLT_Data("test.json")
+    member = data.get_member_data("janedoe@gmail.com")
+    return render_template('home.html', fellow_data = member)
 
 # profile home page
 @app.route('/home')
@@ -64,11 +70,14 @@ def home():
             # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
-        member = data.get_member_data("janedoe@gmail.com")
+        if session.get('email') and session['email']:
+            member = data.get_member_data(session['email'])
+        else:
+            return "User NOT FOUND"
         
         if member.role == "coach":
             fellows = data.get_fellows_data(member.email)
-            return render_template("form.html", fellows = fellows)
+            return render_template("overview.html", coach_data = member, fellows = fellows, record_url  = url_for('record'))
         else: 
             return render_template('home.html', fellow_data = member)
     else:
@@ -82,10 +91,13 @@ def logged_in(blueprint, token):
         flash("Failed to log in with {}".format(blueprint.name), 'danger')
         return redirect(url_for('index'))
                 
-    session["session_id"] = os.urandom(16);
+    session["session_id"] = os.urandom(16)
+    
     resp = slack.get("openid.connect.userInfo")
     user_info = resp.json()
-    print(user_info)
+    session["email"] = user_info['email']
+    print(user_info['email'])
+    # print(user_info)
     return redirect(url_for('home'))
 
     
@@ -94,8 +106,8 @@ def slogin():
     return redirect(url_for("slack.login"))
 
     
-@app.route('/form', methods = ['POST', 'GET'])
-def form():
+@app.route('/record', methods = ['POST', 'GET'])
+def record():
     return render_template('form.html')
     
 @app.route('/signout')

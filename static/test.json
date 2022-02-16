@@ -5,6 +5,19 @@
 			"role": "coach"
 		},
 		{
+			"name": "Deveney",
+			"email": "dsmith@mlt.org",
+			"role": "coach"
+		},
+		{
+			"name": "Michelle",
+			"email": "mlilley@mlt.org",
+			"role": "coach"
+		},
+		
+		
+		
+		{
 			"name": "Jane",
 			"email": "janedoe@gmail.com",
 			"role": "fellow",
