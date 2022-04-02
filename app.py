@@ -8,6 +8,7 @@ from flask_login import (LoginManager, UserMixin, login_required, login_user, lo
                          current_user)
 from flask_dance.contrib.slack import make_slack_blueprint, slack
 from flask_dance.consumer import oauth_authorized
+import mlt_gdata
 
 
 class ReverseProxied(object):
@@ -53,7 +54,8 @@ def index():
     # user_info_endpoint = '/oauth2/v2/userinfo'
     # if current_user.is_authenticated and google.authorized:
     #    google_data = google.get(user_info_endpoint).json()
-    return render_template('index.html', slack_url = "/slogin")
+    mlt_gdata.init();
+   # return render_template('index.html', slack_url = "/slogin")
    
 # profile home page
 @app.route('/sample_home')
