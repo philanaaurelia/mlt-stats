@@ -29,12 +29,12 @@ def init():
     worksheet = sheet.get_worksheet(0)
     
     # get the total number of columns
-    print(sheet_instance.col_count)
+    print(worksheet.col_count)
     ## >> 26
     
     
     # get the value at the specific cell
-    print(sheet_instance.cell(col=3,row=2).value)
+    print(worksheet.cell(col=3,row=2).value)
     ## >> <Cell R2C3 '63881'>
     
     
