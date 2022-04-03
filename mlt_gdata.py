@@ -8,6 +8,9 @@ import gspread
 # If modifying these scopes, delete the file token.json.
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
 
+NAME_COL_TITLE = "Name"
+EMAIL_COL_TITLE = "Email"
+worksheet = None
 
 def init():
     """Shows basic usage of the Sheets API.
@@ -23,7 +26,7 @@ def init():
         #  client.open('https://docs.google.com/spreadsheets/d/1JhVbyzW1cHmUMbCERdHZcgpegb3JU38D18xtSItam-4/edit?usp=sharing')
     
     # get the first sheet of the Spreadsheet
-    sheet_instance = sheet.get_worksheet(0)
+    worksheet = sheet.get_worksheet(0)
     
     # get the total number of columns
     print(sheet_instance.col_count)
@@ -31,5 +34,24 @@ def init():
     
     
     # get the value at the specific cell
-    print(sheet_instance.cell(col=3,row=2))
+    print(sheet_instance.cell(col=3,row=2).value)
     ## >> <Cell R2C3 '63881'>
+    
+    
+# def 
+    
+def get_fellow_data(email):
+    return ""
+    
+def get_fellow_names():
+    fellows : [str] = []
+    
+    if not worksheet:
+        init();
+    
+    cell = worksheet.find(NAME_COL_TITLE)
+    
+    return worksheet.col_values(cell.col)
+    
+    
+    

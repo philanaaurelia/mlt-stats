@@ -80,7 +80,8 @@ def home():
         if member.role == "coach":
             # fellows = data.get_fellows_data(member.email)
             fellows = data.get_fellows_data("all") # dummy variable for testing
-            return render_template("overview.html", coach_data = member, fellows = fellows)
+            fellow_names = mlt_gdata.get_fellow_names()
+            return render_template("overview.html", coach_data = member, fellows = fellows, fnames = fellow_names)
         else: 
             return render_template('home.html', fellow_data = member)
     else:

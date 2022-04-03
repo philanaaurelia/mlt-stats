@@ -9,7 +9,11 @@
 </head>
 
 <body>
-  {% include "coach_nav.html" %}
+  
+  {% with fellow_names=fnames %}
+    {% include "coach_nav.html" %}
+  {% endwith %}
+  
   <br>
   <div class="coach-cont container-fluid">
     <h2 style="margin-Bottom: 20px">Hello, Coach <strong>{{coach_data.name }}</strong>! </h2>

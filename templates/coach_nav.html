@@ -17,6 +17,15 @@
       </li>
     </ul>
     <form action="/sample_home" class="form-inline my-2 my-lg-0" target="_blank">
+      <select class="form-control">
+        
+        {% for fellow in fellow_names %}
+          {% if fellow.meter_val < 70 and fellow.meter_val >= 65 %}
+            <option> {{ fellow }} </option>
+          {% endif %}
+        {%endfor %}
+        
+      </select>
       <button class="btn btn-success my-2 my-sm-0" type="submit">Preview Student View</button>
     </form>
   </div>
