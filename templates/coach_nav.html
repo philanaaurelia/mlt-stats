@@ -16,13 +16,11 @@
         <a class="nav-link" href="#">Stats</a>
       </li>
     </ul>
-    <form action="/sample_home" class="form-inline my-2 my-lg-0" target="_blank">
-      <select class="form-control">
+    <form action="/preview" class="form-inline my-2 my-lg-0" target="_blank">
+      <select class="form-control" style="margin-right: 10px" name="preview_fellow">
         
         {% for fellow in fellow_names %}
-          {% if fellow.meter_val < 70 and fellow.meter_val >= 65 %}
-            <option> {{ fellow }} </option>
-          {% endif %}
+            <option value="{{ fellow }}"> {{ fellow }} </option>
         {%endfor %}
         
       </select>

@@ -110,6 +110,14 @@ def slogin():
     return redirect(url_for("slack.login"))
 
     
+@app.route('/preview', methods = ['POST', 'GET'])
+def preview():
+    # chosen_fellow = request.form["preview_fellow"]
+    chosen_fellow = request.args.get("preview_fellow")
+    print("this is:" + str(chosen_fellow))
+    return ""
+
+
 @app.route('/record', methods = ['POST', 'GET'])
 def record():
     if session.get('session_id') and session['session_id']:
@@ -118,7 +126,6 @@ def record():
             # fellows = data.get_fellows_data(member.email)
             fellows = data.get_fellows_data("all") # dummy variable for testing
             return render_template("form.html", fellows = fellows)
-    
     
     return render_template('form.html')
     

@@ -13,9 +13,12 @@ EMAIL_COL_TITLE = "Email"
 worksheet = None
 
 def init():
+    
+    
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
+    global worksheet
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 
     # authorize the clientsheet 
@@ -29,6 +32,7 @@ def init():
     worksheet = sheet.get_worksheet(0)
     
     # get the total number of columns
+    print("worksheet loaded")
     print(worksheet.col_count)
     ## >> 26
     
@@ -44,14 +48,20 @@ def get_fellow_data(email):
     return ""
     
 def get_fellow_names():
+    # global worksheet
     fellows : [str] = []
     
-    if not worksheet:
+    if worksheet is None:
         init();
-    
+        
     cell = worksheet.find(NAME_COL_TITLE)
+    fellows = worksheet.col_values(cell.col)
+    fellows.pop(0)
     
-    return worksheet.col_values(cell.col)
+    return fellows
+    
+
+    
     
     
     
