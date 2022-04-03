@@ -55,7 +55,7 @@ def index():
     # if current_user.is_authenticated and google.authorized:
     #    google_data = google.get(user_info_endpoint).json()
     mlt_gdata.init();
-   # return render_template('index.html', slack_url = "/slogin")
+    return render_template('index.html', slack_url = "/slogin")
    
 # profile home page
 @app.route('/sample_home')
