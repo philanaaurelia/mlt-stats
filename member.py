@@ -7,7 +7,12 @@ class Member:
         self.name = name
         self.role = role
         self.email = email
-        self.profile= profile
+        
+        if profile != "":
+            self.profile = profile
+        else:
+            self.profile = "https://cdn-icons-png.flaticon.com/512/3006/3006854.png"
+           
         self.records = records
         self.meter_val = meter
         

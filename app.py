@@ -10,6 +10,8 @@ from flask_dance.contrib.slack import make_slack_blueprint, slack
 from flask_dance.consumer import oauth_authorized
 import mlt_gdata
 
+# loginfellows
+
 
 class ReverseProxied(object):
     def __init__(self, app):
@@ -50,10 +52,6 @@ def load_user(id):
 # index home page
 @app.route('/')
 def index():
-    # google_data = None
-    # user_info_endpoint = '/oauth2/v2/userinfo'
-    # if current_user.is_authenticated and google.authorized:
-    #    google_data = google.get(user_info_endpoint).json()
     mlt_gdata.init();
     return render_template('index.html', slack_url = "/slogin")
    
@@ -61,15 +59,15 @@ def index():
 @app.route('/sample_home')
 def sample_home(): 
     data = MLT_Data("test.json")
+    print("sample_home")
     member = data.get_member_data("janedoe@gmail.com")
+    
     return render_template('home.html', fellow_data = member)
 
 # profile home page
 @app.route('/home')
 def home():
     if session.get('session_id') and session['session_id']:
-        # if 'google_id' in request.args:
-            # google_id = request.args.get('google_id')
         # data = MLT_Data("fellow_data.json")
         data = MLT_Data("test.json")
         if session.get('email') and session['email']:
@@ -109,13 +107,19 @@ def logged_in(blueprint, token):
 def slogin():
     return redirect(url_for("slack.login"))
 
-    
+
+
+''' *************
+Coach Funcs
+*************** '''
 @app.route('/preview', methods = ['POST', 'GET'])
 def preview():
-    # chosen_fellow = request.form["preview_fellow"]
+    
+    # get URL parameters 
     chosen_fellow = request.args.get("preview_fellow")
-    print("this is:" + str(chosen_fellow))
-    return ""
+    fellow_dta = mlt_gdata.get_fellow_data(chosen_fellow)
+
+    return render_template('home.html', fellow_data = fellow_dta)
 
 
 @app.route('/record', methods = ['POST', 'GET'])

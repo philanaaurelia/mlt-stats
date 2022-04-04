@@ -99,18 +99,4 @@ class MLT_Data:
             
             
         fellow = self.get_member_data(name)
-        
-        # new points = {"multipler": mult,
-        # "name": severity,
-        # "value": value,
-        # "notes": notes }
-        
-        # self.json_data["members"][name]["points"].append(new_points)
-            
-        
-        
-        
-        
-    ''' def append_data(dta):
-        # twit_key = os.getenv('twit_key') - This is for Heroku
-        twit_key = 'tMhwBBDqqeEiozlZVgCkzzCVO' '''
+    
