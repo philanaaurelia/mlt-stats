@@ -12,6 +12,9 @@ import mlt_gdata
 
 # loginfellows
 
+coaches_list = ['gspivey@mlt.org', 'pbenton@mlt.org', 'ltobia@mlt.org', 'mlilley@mlt.org']
+session_dict = {}
+
 
 class ReverseProxied(object):
     def __init__(self, app):
@@ -48,58 +51,26 @@ app.register_blueprint(slck_blueprint)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
-    
-# index home page
-@app.route('/')
-def index():
-    mlt_gdata.init();
-    return render_template('index.html', slack_url = "/slogin")
-   
-# profile home page
-@app.route('/sample_home')
-def sample_home(): 
-    data = MLT_Data("test.json")
-    print("sample_home")
-    member = data.get_member_data("janedoe@gmail.com")
-    
-    return render_template('home.html', fellow_data = member)
-
-# profile home page
-@app.route('/home')
-def home():
-    if session.get('session_id') and session['session_id']:
-        # data = MLT_Data("fellow_data.json")
-        data = MLT_Data("test.json")
-        if session.get('email') and session['email']:
-            member = data.get_member_data(session['email'])
-        else:
-            return "User NOT FOUND"
-        
-        if member.role == "coach":
-            # fellows = data.get_fellows_data(member.email)
-            fellows = data.get_fellows_data("all") # dummy variable for testing
-            fellow_names = mlt_gdata.get_fellow_names()
-            return render_template("overview.html", coach_data = member, fellows = fellows, fnames = fellow_names)
-        else: 
-            return render_template('home.html', fellow_data = member)
-    else:
-        return redirect(url_for('index'))
-        
         
 @oauth_authorized.connect_via(slck_blueprint)
 def logged_in(blueprint, token):
-    print(token)
     if not token:
         flash("Failed to log in with {}".format(blueprint.name), 'danger')
         return redirect(url_for('index'))
                 
-    session["session_id"] = os.urandom(16)
     
+    # get data from json result
     resp = slack.get("openid.connect.userInfo")
     user_info = resp.json()
+    print(user_info)
+    
+    # configure session tracking
+    session["session_id"] = os.urandom(16)
+    session["name"] = user_info['given_name']
     session["email"] = user_info['email']
-    print(user_info['email'])
-    # print(user_info)
+    session["profile_img"] = user_info['https://slack.com/user_image_192']
+    # session_dict.update({ session["session_id"], session["email"] })
+
     return redirect(url_for('home'))
 
     
@@ -132,12 +103,46 @@ def record():
             return render_template("form.html", fellows = fellows)
     
     return render_template('form.html')
+
+    
+   
+# profile home page
+@app.route('/sample_home')
+def sample_home(): 
+    data = MLT_Data("test.json")
+    print("sample_home")
+    member = data.get_member_data("janedoe@gmail.com")
+    
+    return render_template('home.html', fellow_data = member)
+
+# profile home page
+@app.route('/home')
+def home():
+    if session.get('session_id') and session['session_id']:
+        if session.get('email') and session['email']:
+            if session['email'] in coaches_list:
+                # fellows = data.get_fellows_data("all") # dummy variable for testing
+                fellows = []
+                fellow_names = mlt_gdata.get_fellow_names()
+                member = Member(session["name"], session["email"], session["profile_img"])
+                return render_template("overview.html", coach = member, fellows = fellows, fnames = fellow_names)
+            else: 
+                return render_template('home.html', fellow_data = member)
+
+    return redirect(url_for('index'))
+    
     
 @app.route('/signout')
 def signout():
     session.pop('session_id')
     return redirect(url_for("index"))
 
+# index home page
+@app.route('/')
+def index():
+    mlt_gdata.init();
+    return render_template('index.html', slack_url = "/slogin")
+    
 app.run(
     port = int(os.getenv('PORT')),
     host = os.getenv('IP','0.0.0.0'),

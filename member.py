@@ -3,9 +3,8 @@ import random
 import requests
 
 class Member:
-    def __init__(self, name, role, email, profile, records, meter):
+    def __init__(self, name = "", email = "", profile =" ", records = [], meter = 0.0):
         self.name = name
-        self.role = role
         self.email = email
         
         if profile != "":

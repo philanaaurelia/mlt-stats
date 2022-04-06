@@ -64,6 +64,10 @@ img {
   max-height: 300px;
 }
 
+.circular {
+  border-radius: 50%;
+}
+
 .center-content {
   display: inline;
   float: none;

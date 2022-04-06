@@ -100,7 +100,7 @@ def get_fellow_data(name):
         email = worksheet.cell(name_cell.row, name_cell.col + 1).value
 
     meter_total = ((meter_value / point_count) * 100.0) if point_count !=  0 else 0
-    member_data = Member(name, "", email, "", records, meter_total )
+    member_data = Member(name, email, "", records, meter_total)
     return member_data
 
     
