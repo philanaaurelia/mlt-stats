@@ -12,7 +12,7 @@ import mlt_gdata
 
 # loginfellows
 
-coaches_list = ['gspivey@mlt.org', 'pbenton@mlt.org', 'ltobia@mlt.org', 'mlilley@mlt.org']
+coaches_list = ['gspivey@mlt.org', 'pbenton@mlt.org', 'ltobia@mlt.org', 'mlilley@mlt.org', 'skooshian@mlt.org', 'jpratt@mlt.org', 'ssanders@mlt.org']
 session_dict = {}
 
 

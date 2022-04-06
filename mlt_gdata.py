@@ -64,16 +64,15 @@ def get_fellow_data(name):
         val = worksheet.cell(name_cell.row, cur_cell.col).value
         
         if val is None:
-            val = ""
+            val = "-"
             
-        val = int(val) if val.isnumeric() else val
         
         if CALL_SCHED_TITLE in cur_cell.value:
-            points.append({'name' : cur_cell.value[9:], 'value' : int(val), 'total' : 5})
+            points.append({'name' : cur_cell.value[9:], 'value' : int(val) if val.isnumeric() else val, 'total' : 5})
         elif CALL_ATTEND_TITLE in cur_cell.value:
-            points.append({'name' : cur_cell.value[9:], 'value' : int(val), 'total' : 10})
+            points.append({'name' : cur_cell.value[9:], 'value' : int(val) if val.isnumeric() else val, 'total' : 10})
         elif CALL_ASSIGN_TITLE in cur_cell.value:
-            points.append({'name' : cur_cell.value[9:], 'value' : int(val), 'total' : 5})
+            points.append({'name' : cur_cell.value[9:], 'value' : int(val) if val.isnumeric() else val, 'total' : 5})
         # elif CALL_EVENT_TITLE in cur_cell.value:
         #    points.append({'name' : cur_cell.value[9:], 'value' : int(val)})
             
