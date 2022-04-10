@@ -83,15 +83,26 @@ def slogin():
 ''' *************
 Coach Funcs
 *************** '''
+
+
+def is_member_coach():
+    if session.get('email') and session['email']:
+        if session['email'] in coaches_list:
+            return true
+        else:
+            return false
+                
 @app.route('/preview', methods = ['POST', 'GET'])
 def preview():
     
-    # get URL parameters 
-    chosen_fellow = request.args.get("preview_fellow")
-    fellow_dta = mlt_gdata.get_fellow_data(chosen_fellow)
-
-    return render_template('home.html', fellow_data = fellow_dta)
-
+    # get URL parameters
+    if session.get('session_id') and session['session_id']:
+        if member_is_coach() == true:
+            chosen_fellow = request.args.get("preview_fellow")
+            fellow_dta = mlt_gdata.get_fellow_data(chosen_fellow)
+            return render_template('home.html', fellow_data = fellow_dta)
+        else:
+            return redirect(url_for('index'))
 
 @app.route('/record', methods = ['POST', 'GET'])
 def record():
@@ -118,9 +129,7 @@ def sample_home():
 # profile home page
 @app.route('/home')
 def home():
-    if session.get('session_id') and session['session_id']:
-        if session.get('email') and session['email']:
-            if session['email'] in coaches_list:
+   
                 # fellows = data.get_fellows_data("all") # dummy variable for testing
                 fellows = []
                 fellow_names = mlt_gdata.get_fellow_names()
