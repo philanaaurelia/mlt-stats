@@ -88,9 +88,9 @@ Coach Funcs
 def is_member_coach():
     if session.get('email') and session['email']:
         if session['email'] in coaches_list:
-            return true
+            return True
         else:
-            return false
+            return False
                 
 @app.route('/preview', methods = ['POST', 'GET'])
 def preview():
@@ -133,7 +133,7 @@ def sample_home():
 def home():
     
     if session.get('session_id') and session['session_id']:
-        if is_member_coach() == true:
+        if is_member_coach() == True:
             # fellows = data.get_fellows_data("all") # dummy variable for testing
             fellows = []
             fellow_names = mlt_gdata.get_fellow_names()
