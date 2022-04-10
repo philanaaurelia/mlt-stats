@@ -97,7 +97,7 @@ def preview():
     
     # get URL parameters
     if session.get('session_id') and session['session_id']:
-        if is_member_coach() == true:
+        if is_member_coach() == True:
             chosen_fellow = request.args.get("preview_fellow")
             fellow_dta = mlt_gdata.get_fellow_data(chosen_fellow)
             return render_template('home.html', fellow_data = fellow_dta)
