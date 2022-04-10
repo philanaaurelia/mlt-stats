@@ -10,7 +10,7 @@ class Member:
         if profile != "":
             self.profile = profile
         else:
-            self.profile = "https://cdn-icons-png.flaticon.com/512/3006/3006854.png"
+            self.profile = "https://www.kindpng.com/picc/m/99-997900_headshot-silhouette-person-placeholder-hd-png-download.png"
            
         self.records = records
         self.meter_val = meter
